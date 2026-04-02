@@ -1,0 +1,10 @@
+package gustavorods.homecart.repository;
+
+import gustavorods.homecart.model.UsersModel;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+
+public interface UserRepository extends JpaRepository<UsersModel, Long> {
+    Optional<UsersModel> findById(long id);
+}

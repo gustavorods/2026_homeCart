@@ -6,5 +6,5 @@ CREATE TABLE residence (
                            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
                            CONSTRAINT fk_residence_owner
-                               FOREIGN KEY (owner_id) REFERENCES user(id)
+                               FOREIGN KEY (owner_id) REFERENCES users(id)
 );

@@ -12,5 +12,5 @@ CREATE TABLE residence_member (
                                       FOREIGN KEY (residence_id) REFERENCES residence(id),
 
                                   CONSTRAINT fk_member_user
-                                      FOREIGN KEY (user_id) REFERENCES user(id)
+                                      FOREIGN KEY (user_id) REFERENCES users(id)
 );

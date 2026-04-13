@@ -16,5 +16,5 @@ CREATE TABLE shopping_item (
                                    FOREIGN KEY (residence_id) REFERENCES residence(id),
 
                                CONSTRAINT fk_item_user
-                                   FOREIGN KEY (created_by) REFERENCES user(id)
+                                   FOREIGN KEY (created_by) REFERENCES users(id)
 );

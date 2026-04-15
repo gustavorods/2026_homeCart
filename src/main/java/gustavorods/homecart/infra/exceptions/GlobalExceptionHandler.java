@@ -35,11 +35,11 @@ public class GlobalExceptionHandler {
     }
 
     // Não autenticado (token inválido ou ausente)
-    @ExceptionHandler(AuthenticationException.class)
-    public ResponseEntity<?> handleAuthentication(AuthenticationException ex) {
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of(
-                "error", "Unauthorized"
-        ));
+    @ExceptionHandler(InvalidCredentialsException.class)
+    public ResponseEntity<?> handleInvalidCredentials(InvalidCredentialsException ex) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(
+                Map.of("error", ex.getMessage())
+        );
     }
 
     // Sem permissão (logado mas sem acesso)
@@ -64,5 +64,11 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(
                 Map.of("error", ex.getMessage())
         );
+    }
+
+    // Trantando erro de usuario que não existe
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity handleUserNotFound(UserNotFoundException ex) {
+        return ResponseEntity.status(404).body(ex.getMessage());
     }
 }

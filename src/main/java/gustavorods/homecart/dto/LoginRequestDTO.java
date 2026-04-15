@@ -4,10 +4,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-public record RegisterRequestDTO(
-        @NotBlank(message="Name is required")
-        String name,
-
+public record LoginRequestDTO(
         @Email(message = "Invalid Email")
         @NotBlank(message="Email is required")
         String email,

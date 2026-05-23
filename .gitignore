@@ -33,5 +33,5 @@ build/
 .vscode/
 
 ## SSL Certificate
-*.pem
-*.jks
+/certs
+src/main/resources/application.properties

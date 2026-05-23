@@ -28,7 +28,7 @@ import java.util.Optional;
 @RequestMapping("/auth")
 public class AuthController {
     @Autowired
-    UsersRepository usersRepository;
+    private UsersRepository usersRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired

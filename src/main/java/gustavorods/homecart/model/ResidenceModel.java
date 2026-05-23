@@ -18,7 +18,8 @@ public class ResidenceModel {
     @JoinColumn(name="owner_id")
     private UsersModel owner;
 
-    private int invite_code;
+    @Column(name = "invite_code")
+    private int inviteCode;
 
     @CreationTimestamp
     private LocalDateTime created_at;

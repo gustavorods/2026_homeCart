@@ -12,6 +12,7 @@ import java.security.AlgorithmConstraints;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.time.temporal.ChronoUnit;
 import java.util.UUID;
 
 @Service
@@ -65,11 +66,13 @@ public class TokenService {
     }
 
     private Instant generateExpirationDate() {
-        return Instant.now().plusSeconds(20);
+        // 2 hours duration (Excellent standard for Access Token security)
+        return Instant.now().plus(2, ChronoUnit.HOURS);
     }
 
     private Instant generateRefreshExpirationDate() {
-        return Instant.now().plusSeconds(120);
+        // 7-day duration (Save the user's login without it expiring too quickly)
+        return Instant.now().plus(7, ChronoUnit.DAYS);
     }
 }
 

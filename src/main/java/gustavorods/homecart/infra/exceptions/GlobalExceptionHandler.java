@@ -71,4 +71,10 @@ public class GlobalExceptionHandler {
     public ResponseEntity handleUserNotFound(UserNotFoundException ex) {
         return ResponseEntity.status(404).body(ex.getMessage());
     }
+
+    // Trantando erro de residẽncia que não existe
+    @ExceptionHandler(ResidenceNotFoundException.class)
+    public ResponseEntity handleResidenceNotFound(ResidenceNotFoundException ex) {
+        return ResponseEntity.status(404).body(ex.getMessage());
+    }
 }

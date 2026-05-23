@@ -1,6 +1,8 @@
 package gustavorods.homecart.controllers;
 
+import gustavorods.homecart.dto.AddMemberRequestDTO;
 import gustavorods.homecart.dto.ResidenceRequestDTO;
+import gustavorods.homecart.service.AddResidenceMemberService;
 import gustavorods.homecart.service.ResidenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +20,8 @@ public class ResidenceController {
 
     @Autowired
     private ResidenceService residenceService;
+    @Autowired
+    private AddResidenceMemberService addResidenceMemberService;
 
     // Create residence route
     @PostMapping("/create")
@@ -26,6 +30,15 @@ public class ResidenceController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(
                 Map.of("code", code)
+        );
+    }
+
+    @PostMapping("/add-member")
+    public ResponseEntity<?> addMember(@RequestBody AddMemberRequestDTO body) {
+        boolean status = addResidenceMemberService.addResidenceMember(body);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(
+                Map.of("menssage: ", "member:" + body.email() + " added successfully")
         );
     }
 }
